@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Favourite Meals</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>My Favourite Meals</h1>
+    </header>
+    <div id="favouritesList" class="favourites-container">
+        <!-- Favourite meals will be populated dynamically by JavaScript -->
+    </div>
+<a href="meal.html"><button>Back</button></a>
+    <script src="script.js"></script>
+    <script>
+        // Call updateFavouritesUI to initialize favourites UI
+        updateFavouritesUI();
+
+        function removeFromFavourites(mealId) {
+            // Retrieve favourites from local storage
+            let favourites = JSON.parse(localStorage.getItem('favourites')) || [];
+
+            // Remove the meal with the given ID from favourites
+            favourites = favourites.filter(meal => meal.id !== mealId);
+
+            // Update local storage
+            localStorage.setItem('favourites', JSON.stringify(favourites));
+
+            // Update UI to reflect the removal
+            updateFavouritesUI();
+        }
+    </script>
+</body>
+</html>
